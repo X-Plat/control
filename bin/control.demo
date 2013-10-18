@@ -1,0 +1,24 @@
+#!/bin/bash
+
+PRO_HOME=prefix
+PRO_NAME=process_name
+
+source $PRO_HOME/vendor/control/bin/lib.sh
+
+function start()
+{
+}
+
+function ck_health()
+{
+}
+
+function stop()
+{
+}
+
+function monitor()
+{
+}
+
+action $@

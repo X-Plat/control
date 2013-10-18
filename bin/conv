@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'json'
+require 'yaml'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: conv [options]"
+
+  opts.on("-f", "--from json/yaml") do |f|
+    options[:from] = f
+  end
+
+  opts.on("-t", "--to json/yaml/ruby") do |t|
+    options[:to] = t
+  end
+end.parse!
+
+file = ARGV[0]
+
+case options[:from]
+  when "json"
+    body = JSON.load(File.read(file)) 
+  when "yaml","yml" 
+    body = YAML.load(File.read(file))
+  else
+    puts "From type not support"
+end
+
+case options[:to]
+  when "json"
+    puts JSON.pretty_generate(body)
+  when "yaml", "yml"
+    puts YAML.dump(body)
+  when "ruby"
+    puts body
+  else
+    puts "To type not support"
+end
