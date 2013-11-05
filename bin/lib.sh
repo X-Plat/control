@@ -109,7 +109,7 @@ HD_USAGE
 # key:value
 function monitor()
 {
-    ck_health && echo status: 0 || echo status: 1
+    ck_health && echo {"status": 0} || echo {"status": 1}
 }
 
 # ¼à¿Ø¿ØÖÆº¯Êý
